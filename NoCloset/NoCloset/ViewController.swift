@@ -16,6 +16,12 @@ var parteCima:[Peca] = []
 var parteBaixo:[Peca] = []
 var calcado:[Peca] = []
 
+// LookMontado
+var lookSelecionado:[Look] = []
+
+// ContadorDeLooksMontados
+var contador = 0
+
 
 //ViewController onde estarão agrupados os looks salvos
 
@@ -38,7 +44,7 @@ var calcado:[Peca] = []
     //
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return lookSelecionado.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -92,6 +98,7 @@ var calcado:[Peca] = []
         encherCalcado()
         encherParteCima()
         encherParteBaixo()
+        
         
         navigationController?.navigationBar.prefersLargeTitles = true
         
@@ -260,13 +267,16 @@ class TelaNovoLook2: UIViewController, UICollectionViewDelegate, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
+        
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewNovoLook2Cell", for: indexPath) as! CollectionViewNovoLook2Cell
         
         cell.imagemNovoLook2.image = opcao[indexPath.section][indexPath.row].foto
-
+        cell.linha = indexPath.section
+        cell.coluna = indexPath.row
+        
+        
         return cell
-
+        
     }
     
     //  sobreescrevendo a função touchesBegan para esconder o teclado quando o usuário tocar na tela
@@ -277,71 +287,98 @@ class TelaNovoLook2: UIViewController, UICollectionViewDelegate, UICollectionVie
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+//        encherAcessorios()
+//        encherCalcado()
+//        encherParteCima()
+//        encherParteBaixo()
+        
         navigationController?.navigationBar.prefersLargeTitles = true
         
         collectionViewNovoLook2.delegate = self
         collectionViewNovoLook2.dataSource = self
-
+        
     }
     
     // encher Guarda-Roupa
     
+    
     var opcao: [[Peca]] = [acessorios, parteCima, parteBaixo, calcado]
     
+//
+//    func encherAcessorios(){
+//
+//        let nomes:[String] = ["Colar Flecha", "Oculos Quadrado", "Bucket Preto", "Chapéu de Palha", "Boné Azul", "Cordão de Prata", "Gorro Amarelo", "Óculos Redondo"]
+//
+//        for n in 0..<7 {
+//
+//            let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "acessorio"+String(n+1)), nome: nomes[n])
+//
+//            acessorios.append(novapeca)
+//
+//        }
+//
+//    }
+//
+//    func encherParteCima(){
+//
+//        let nomes:[String] = ["Camiseta Branca", "Camiseta Marrom", "Camiseta Cinza", "Camisa Listrada", "Camisa Espacial", "Casaco Azul", "Jaqueta Jeans"]
+//
+//        for n in 0..<7 {
+//
+//            let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "pecaCima"+String(n+1)), nome: nomes[n])
+//
+//            parteCima.append(novapeca)
+//
+//        }
+//
+//    }
+//
+//    func encherParteBaixo(){
+//
+//        let nomes:[String] = ["Short Pelicano", "Bermuda Jeans", "Short Bege", "Calça Adidas", "Jeans Preta", "Calça Alfaiataria", "Calça Cargo Verde", "Short Preto"]
+//
+//        for n in 0..<7 {
+//
+//            let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "pecaBaixo"+String(n+1)), nome: nomes[n])
+//
+//            parteBaixo.append(novapeca)
+//
+//        }
+//
+//    }
+//
+//    func encherCalcado(){
+//
+//        let nomes:[String] = ["Sapato Preto", "Havaiana", "Sapato Branco", "Papete Preta", "Chinelo Branco", "Meia Azul", "All Star Amarelo"]
+//
+//        for n in 0..<7 {
+//
+//            let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "calcado"+String(n+1)), nome: nomes[n])
+//
+//            calcado.append(novapeca)
+//
+//        }
+//    }
     
-    func encherAcessorios(){
+    func adicionaLooks(){
         
-        let nomes:[String] = ["Colar Flecha", "Oculos Quadrado", "Bucket Preto", "Chapéu de Palha", "Boné Azul", "Cordão de Prata", "Gorro Amarelo", "Óculos Redondo"]
-        
-        for n in 0..<7 {
-            
-            let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "acessorio"+String(n+1)), nome: nomes[n])
-            
-            acessorios.append(novapeca)
-            
+        for i in 0...opcao.count{
+            for j in 0...opcao[i].count{
+                if opcao[i][j].pertence == true{
+                    lookSelecionado[contador].pecas.append(opcao[i][j])
+                    
+                }
+                
+            }
         }
         
-    }
-    
-    func encherParteCima(){
+        // salvar o nome do look aqui nessa linha
+        //lookSelecionado[contador].nome = aquiEntraAOutletdoTextField
         
-        let nomes:[String] = ["Camiseta Branca", "Camiseta Marrom", "Camiseta Cinza", "Camisa Listrada", "Camisa Espacial", "Casaco Azul", "Jaqueta Jeans"]
-        
-        for n in 0..<7 {
-            
-            let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "pecaCima"+String(n+1)), nome: nomes[n])
-            
-            parteCima.append(novapeca)
-            
-        }
-        
-    }
-    
-    func encherParteBaixo(){
-        
-        let nomes:[String] = ["Short Pelicano", "Bermuda Jeans", "Short Bege", "Calça Adidas", "Jeans Preta", "Calça Alfaiataria", "Calça Cargo Verde", "Short Preto"]
-        
-        for n in 0..<7 {
-            
-            let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "pecaBaixo"+String(n+1)), nome: nomes[n])
-            
-            parteBaixo.append(novapeca)
-            
-        }
-        
-    }
-    
-    func encherCalcado(){
-        
-        let nomes:[String] = ["Sapato Preto", "Havaiana", "Sapato Branco", "Papete Preta", "Chinelo Branco", "Meia Azul", "All Star Amarelo"]
-        
-        for n in 0..<7 {
-            
-            let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "calcado"+String(n+1)), nome: nomes[n])
-            
-            calcado.append(novapeca)
-            
-        }
+        contador = contador + 1
     }
 }
 
+//Preciso do Storyboard p linkar o textfield para um outlet que vai pegar o nome do look
+// Preciso de um botão para salvar e chamar a função adicionaLooks
