@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		24977C2524FD22DC00949BEA /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24977C2424FD22DC00949BEA /* Classes.swift */; };
+		24FD437025001C7700129092 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD436F25001C7700129092 /* API.swift */; };
+		24FD437225001FF500129092 /* Tempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD437125001FF500129092 /* Tempo.swift */; };
 		AC9CCC3224FD10A100990B8B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CCC3124FD10A100990B8B /* AppDelegate.swift */; };
 		AC9CCC3424FD10A100990B8B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CCC3324FD10A100990B8B /* SceneDelegate.swift */; };
 		AC9CCC3624FD10A100990B8B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CCC3524FD10A100990B8B /* ViewController.swift */; };
@@ -23,6 +25,8 @@
 
 /* Begin PBXFileReference section */
 		24977C2424FD22DC00949BEA /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
+		24FD436F25001C7700129092 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
+		24FD437125001FF500129092 /* Tempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tempo.swift; sourceTree = "<group>"; };
 		AC9CCC2E24FD10A100990B8B /* NoCloset.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NoCloset.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC9CCC3124FD10A100990B8B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AC9CCC3324FD10A100990B8B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +77,8 @@
 				AC9CCC3524FD10A100990B8B /* ViewController.swift */,
 				24977C2424FD22DC00949BEA /* Classes.swift */,
 				AC9CCC3724FD10A100990B8B /* Main.storyboard */,
+				24FD437125001FF500129092 /* Tempo.swift */,
+				24FD436F25001C7700129092 /* API.swift */,
 				AC9CCC4B24FD79AC00990B8B /* CollectionViewNovoLookCell.swift */,
 				ACE6F10924FFF56F00963E21 /* CollectionViewNovoLook2Cell.swift */,
 				AC9CCC4524FD477800990B8B /* TableViewLooksCell.swift */,
@@ -159,7 +165,9 @@
 				ACE6F10A24FFF56F00963E21 /* CollectionViewNovoLook2Cell.swift in Sources */,
 				AC9CCC3624FD10A100990B8B /* ViewController.swift in Sources */,
 				AC9CCC4A24FD65E900990B8B /* CollectionViewLooksCell.swift in Sources */,
+				24FD437225001FF500129092 /* Tempo.swift in Sources */,
 				AC9CCC4824FD5C3600990B8B /* TableViewNovoLookCell.swift in Sources */,
+				24FD437025001C7700129092 /* API.swift in Sources */,
 				AC9CCC3224FD10A100990B8B /* AppDelegate.swift in Sources */,
 				24977C2524FD22DC00949BEA /* Classes.swift in Sources */,
 				AC9CCC4624FD477800990B8B /* TableViewLooksCell.swift in Sources */,
@@ -309,7 +317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 389X9SAV47;
+				DEVELOPMENT_TEAM = CT66845T5J;
 				INFOPLIST_FILE = NoCloset/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -327,7 +335,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 389X9SAV47;
+				DEVELOPMENT_TEAM = CT66845T5J;
 				INFOPLIST_FILE = NoCloset/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
