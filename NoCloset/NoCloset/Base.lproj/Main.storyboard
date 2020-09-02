@@ -89,6 +89,9 @@
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="contactAdd" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RCy-zD-FlS">
                                                     <rect key="frame" x="369" y="9" width="25" height="24"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <connections>
+                                                        <segue destination="Tbz-9y-tHp" kind="show" id="Oac-vl-Gfd"/>
+                                                    </connections>
                                                 </button>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t0H-r3-t0m">
                                                     <rect key="frame" x="0.0" y="50" width="414" height="159"/>
@@ -235,8 +238,7 @@
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <state key="normal" image="Editing Unselected Dark"/>
                                                                         <connections>
-                                                                            <action selector="buttonUnselected:" destination="5gW-tF-5vq" eventType="touchUpInside" id="2mO-eU-JOu"/>
-                                                                            <action selector="buttonUnselected:" destination="bSw-Tp-vGd" eventType="touchUpInside" id="kDg-wT-vMe"/>
+                                                                            <action selector="buttonUnselected:" destination="5gW-tF-5vq" eventType="touchUpInside" id="HgH-4C-eQ1"/>
                                                                         </connections>
                                                                     </button>
                                                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Osv-BW-DyU">
@@ -244,7 +246,7 @@
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <state key="normal" image="Editing Selected Light"/>
                                                                         <connections>
-                                                                            <action selector="buttonSelected:" destination="5gW-tF-5vq" eventType="touchUpInside" id="Pvo-Ze-W7Q"/>
+                                                                            <action selector="buttonSelected:" destination="5gW-tF-5vq" eventType="touchUpInside" id="EEx-zE-VPU"/>
                                                                         </connections>
                                                                     </button>
                                                                 </subviews>
@@ -277,9 +279,101 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v5S-P7-sw9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <exit id="bSw-Tp-vGd" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="2160.8695652173915" y="-181.47321428571428"/>
+            <point key="canvasLocation" x="1317" y="-596"/>
+        </scene>
+        <!--Novo Look-->
+        <scene sceneID="8AU-DP-k2i">
+            <objects>
+                <viewController id="Tbz-9y-tHp" customClass="TelaNovoLook2" customModule="NoCloset" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3Je-kr-03d">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hKp-Yv-Szm">
+                                <rect key="frame" x="0.0" y="0.0" width="412" height="192"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.97647058819999999" green="0.97647058819999999" blue="0.97647058819999999" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nome do look" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="btE-nz-g4W">
+                                <rect key="frame" x="144" y="204" width="127" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.91768521069999998" green="0.91755801439999995" blue="0.92157036069999998" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="fOS-Kt-AFM">
+                                <rect key="frame" x="0.0" y="279" width="412" height="195"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="4Sp-MT-xot">
+                                    <size key="itemSize" width="186" height="187"/>
+                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CollectionViewNovoLook2Cell" id="4bO-kb-hak" customClass="CollectionViewNovoLook2Cell" customModule="NoCloset" customModuleProvider="target">
+                                        <rect key="frame" x="50" y="4.5" width="186" height="186"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="v19-7L-UcK">
+                                            <rect key="frame" x="0.0" y="0.0" width="186" height="186"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wgq-NI-w0K">
+                                                    <rect key="frame" x="-9" y="0.0" width="186" height="176"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffb-Io-rAu">
+                                                    <rect key="frame" x="153" y="8" width="24" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="Editing Selected Light"/>
+                                                    <connections>
+                                                        <action selector="buttonSelected2Action:" destination="4bO-kb-hak" eventType="touchUpInside" id="E9g-hQ-qq9"/>
+                                                        <action selector="buttonUnselected2Action:" destination="4bO-kb-hak" eventType="touchUpInside" id="inZ-W3-vwt"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s64-Qa-olc">
+                                                    <rect key="frame" x="152" y="8" width="25" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="Editing Unselected Dark"/>
+                                                </button>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="186" height="186"/>
+                                        <connections>
+                                            <outlet property="buttonSelected2" destination="ffb-Io-rAu" id="aRG-1v-SeE"/>
+                                            <outlet property="buttonUnselected2" destination="s64-Qa-olc" id="4rw-G9-KO0"/>
+                                            <outlet property="imagemNovoLook2" destination="wgq-NI-w0K" id="4yi-Mj-lVM"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ifd-bK-Ic7">
+                                    <rect key="frame" x="0.0" y="0.0" width="50" height="195"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Teste" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2NK-J7-pLA">
+                                            <rect key="frame" x="0.0" y="26" width="42" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </collectionReusableView>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="pm1-T8-o73"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Novo Look" id="oAv-aM-uLk"/>
+                    <connections>
+                        <outlet property="collectionViewNovoLook2" destination="fOS-Kt-AFM" id="U4D-Bp-We3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DSZ-i8-FSe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2126.0869565217395" y="-200.22321428571428"/>
         </scene>
         <!--Tela Ver Look-->
         <scene sceneID="eYv-xm-zyy">

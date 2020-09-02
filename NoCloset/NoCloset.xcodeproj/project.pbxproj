@@ -18,6 +18,7 @@
 		AC9CCC4824FD5C3600990B8B /* TableViewNovoLookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CCC4724FD5C3600990B8B /* TableViewNovoLookCell.swift */; };
 		AC9CCC4A24FD65E900990B8B /* CollectionViewLooksCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CCC4924FD65E900990B8B /* CollectionViewLooksCell.swift */; };
 		AC9CCC4C24FD79AC00990B8B /* CollectionViewNovoLookCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC9CCC4B24FD79AC00990B8B /* CollectionViewNovoLookCell.swift */; };
+		ACE6F10A24FFF56F00963E21 /* CollectionViewNovoLook2Cell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACE6F10924FFF56F00963E21 /* CollectionViewNovoLook2Cell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		AC9CCC4724FD5C3600990B8B /* TableViewNovoLookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewNovoLookCell.swift; sourceTree = "<group>"; };
 		AC9CCC4924FD65E900990B8B /* CollectionViewLooksCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewLooksCell.swift; sourceTree = "<group>"; };
 		AC9CCC4B24FD79AC00990B8B /* CollectionViewNovoLookCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewNovoLookCell.swift; sourceTree = "<group>"; };
+		ACE6F10924FFF56F00963E21 /* CollectionViewNovoLook2Cell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewNovoLook2Cell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +74,7 @@
 				24977C2424FD22DC00949BEA /* Classes.swift */,
 				AC9CCC3724FD10A100990B8B /* Main.storyboard */,
 				AC9CCC4B24FD79AC00990B8B /* CollectionViewNovoLookCell.swift */,
+				ACE6F10924FFF56F00963E21 /* CollectionViewNovoLook2Cell.swift */,
 				AC9CCC4524FD477800990B8B /* TableViewLooksCell.swift */,
 				AC9CCC3A24FD10A200990B8B /* Assets.xcassets */,
 				AC9CCC4724FD5C3600990B8B /* TableViewNovoLookCell.swift */,
@@ -153,6 +156,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ACE6F10A24FFF56F00963E21 /* CollectionViewNovoLook2Cell.swift in Sources */,
 				AC9CCC3624FD10A100990B8B /* ViewController.swift in Sources */,
 				AC9CCC4A24FD65E900990B8B /* CollectionViewLooksCell.swift in Sources */,
 				AC9CCC4824FD5C3600990B8B /* TableViewNovoLookCell.swift in Sources */,
