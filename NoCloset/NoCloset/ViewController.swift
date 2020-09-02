@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MapKit
+import CoreLocation
 
 // GuardaRoupa
 var acessorios:[Peca] = []
@@ -17,7 +19,23 @@ var calcado:[Peca] = []
 
 //ViewController onde estarão agrupados os looks salvos
 
-class TelaSeusLooks: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource {
+ class TelaSeusLooks: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate{
+   
+// API do Tempo
+    
+    //Variaveis
+    @IBOutlet weak var viewBG: UIView!
+    @IBOutlet weak var imageTempo: UIImageView!
+    @IBOutlet weak var labelTemp: UILabel!
+    @IBOutlet weak var labelCidade: UILabel!
+    @IBOutlet weak var labelStatus: UILabel!
+    @IBOutlet weak var labelDicas: UILabel!
+    
+    var locationManager:CLLocationManager!
+    
+    // O resto está na extensão API
+    
+    //
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return 7
@@ -69,6 +87,7 @@ class TelaSeusLooks: UIViewController, UITableViewDelegate, UITableViewDataSourc
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         encherAcessorios()
         encherCalcado()
         encherParteCima()
@@ -81,8 +100,11 @@ class TelaSeusLooks: UIViewController, UITableViewDelegate, UITableViewDataSourc
         TableViewLooks.delegate = self
         TableViewLooks.dataSource = self
         
+        localizacao()
         
     }
+    
+
     
     
 }
