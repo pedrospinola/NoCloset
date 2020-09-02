@@ -13,4 +13,11 @@ class TableViewNovoLookCell: UITableViewCell{
     @IBOutlet weak var sessionNewLook: UILabel!
     
     @IBOutlet weak var collectionViewNovoLook: UICollectionView!
+    
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//
+//        sessionNewLook = UILabel()
+//        collectionViewNovoLook = UICollectionView()
+//    }
 }

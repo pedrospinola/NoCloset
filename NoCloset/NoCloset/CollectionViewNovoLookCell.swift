@@ -22,6 +22,13 @@ class CollectionViewNovoLookCell: UICollectionViewCell{
         buttonUnselectedImage.isHidden = true
     }
     
+//    override func prepareForReuse() {
+//        super.prepareForReuse()
+//        
+//        imagemPeçaDoLook.image = UIImage()
+//        buttonSelectedImage.isHidden = true
+//        buttonUnselectedImage.isHidden = false
+//    }
     
     @IBAction func buttonSelected(_ sender: Any) {
         buttonSelectedImage.isHidden = true
