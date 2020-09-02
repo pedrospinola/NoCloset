@@ -14,15 +14,22 @@ public class CollectionViewNovoLook2Cell: UICollectionViewCell {
     @IBOutlet weak var buttonUnselected2: UIButton!
     @IBOutlet weak var buttonSelected2: UIButton!
     
+    var linha: Int = 0
+    var coluna: Int = 0
+    
     @IBAction func buttonSelected2Action(_ sender: Any) {
         buttonSelected2.isHidden = true
         buttonUnselected2.isHidden = false
+        
+        opcao[linha][coluna].pertence = true
         
     }
     
     @IBAction func buttonUnselected2Action(_ sender: Any) {
         buttonUnselected2.isHidden = true
         buttonSelected2.isHidden = false
+        
+        opcao[linha][coluna].pertence = false
     }
     
 }
