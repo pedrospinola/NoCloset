@@ -239,10 +239,9 @@ class TelaNovoLook2: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        //ta dando problema com a CollectionViewNovoLookCell
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewNovoLook2Cell", for: indexPath) //as! CollectionViewNovoLook2Cell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewNovoLook2Cell", for: indexPath) as! CollectionViewNovoLook2Cell
         
-        //cell.imagemNovoLook2.image = opcao[indexPath.section][indexPath.row].foto
+        cell.imagemNovoLook2.image = opcao[indexPath.section][indexPath.row].foto
 
         return cell
 
@@ -260,7 +259,7 @@ class TelaNovoLook2: UIViewController, UICollectionViewDelegate, UICollectionVie
         
         collectionViewNovoLook2.delegate = self
         collectionViewNovoLook2.dataSource = self
-        collectionViewNovoLook2.register(CollectionViewNovoLook2Cell.self, forCellWithReuseIdentifier: "CollectionViewNovoLook2Cell")
+
     }
     
     // encher Guarda-Roupa
