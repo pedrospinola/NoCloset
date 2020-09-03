@@ -14,6 +14,13 @@ public class CollectionViewNovoLook2Cell: UICollectionViewCell {
     @IBOutlet weak var buttonUnselected2: UIButton!
     @IBOutlet weak var buttonSelected2: UIButton!
     
+    public override func prepareForReuse() {
+            super.prepareForReuse()
+    
+            buttonSelected2.isHidden = true
+            buttonUnselected2.isHidden = false
+        }
+    
     var linha: Int = 0
     var coluna: Int = 0
     

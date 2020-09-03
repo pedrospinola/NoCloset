@@ -20,10 +20,14 @@ var calcado:[Peca] = []
 var lookSelecionado:[Look] = []
 
 // LooksSeparadosEmTipos
-var listaDeLooks: [TipoLook] = []
+var lookDeSair: [Look] = [Look(pecas: [acessorios[3],parteCima[3],parteBaixo[3],calcado[2]], nome: "Basiquinho"),Look(pecas: [acessorios[1],parteCima[2],parteBaixo[1],calcado[3]], nome: "Soft"), Look(pecas: [acessorios[4],parteCima[2],parteBaixo[1],calcado[1]], nome: "Rolezinho")]
+var lookDeFaculdade: [Look] = [Look(pecas: [acessorios[2],parteCima[5],parteBaixo[4],calcado[4]], nome: "Aula paia"),Look(pecas: [acessorios[4],parteCima[3],parteBaixo[2],calcado[1]], nome: "Crush"), Look(pecas: [acessorios[5],parteCima[3],parteBaixo[2],calcado[1]], nome: "De boa")]
 
 // ContadorDeLooksMontados
 var contador = 0
+
+// variável para armazenar o botão clicado
+var testButton = 0
 
 // ContadorDeTiposDeLooksSalvos
 var contadorTiposDeLook = 0
@@ -34,7 +38,7 @@ var opcao: [[Peca]] = [acessorios, parteCima, parteBaixo, calcado]
 
 //ViewController onde estarão agrupados os looks salvos
 
-class TelaSeusLooks: UIViewController, UITableViewDelegate, UITableViewDataSource, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate{
+class TelaSeusLooks: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, CLLocationManagerDelegate{
     
     // API do Tempo
     
@@ -52,50 +56,56 @@ class TelaSeusLooks: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     //
     
+    var enviaDado = 0
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return lookSelecionado.count
+        if collectionView == collectionViewLookdeSair{
+            return lookDeSair.count
+        } else if collectionView == collectionViewLookDeFaculdade{
+            return lookDeFaculdade.count
+        }
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewLooksCell", for: indexPath) as! CollectionViewLooksCell
         
-        cell.looksImage.image = UIImage(imageLiteralResourceName: "Mask Group")
-        cell.looksName.text = "Heterotop"
-        
-        return cell
-    }
-    
-    
-    @IBOutlet weak var TableViewLooks: UITableView!
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Aqui tem que entrar o TipoDeLook.count
-        if lookSelecionado.count == 0{
-            return 1
+        if collectionView == collectionViewLookdeSair{
+            
+            //analisar se é melhor colocar um count -1 ou indexpath.row
+            cell.looksImage.image = lookDeSair[indexPath.row].pecas[0].foto
+            cell.looksName.text = lookDeSair[indexPath.row].nome
+            
+        }else if collectionView == collectionViewLookDeFaculdade{
+            
+            cell.looksImage.image = lookDeFaculdade[indexPath.row].pecas[0].foto
+            cell.looksName.text = lookDeFaculdade[indexPath.row].nome
+            
         }
-        return lookSelecionado.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "TableViewLooksCell", for: indexPath) as! TableViewLooksCell
-        
-        self.section = indexPath.row
-        cell.sessionOfLookTitle.text = "Looks de sair"
-        cell.CollectionViewLook.delegate = self
-        cell.CollectionViewLook.dataSource = self
-        
         
         return cell
+    }
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        enviaDado = indexPath.row
+//
+//    }
+    
+    
+    @IBOutlet weak var collectionViewLookdeSair: UICollectionView!
+    @IBOutlet weak var collectionViewLookDeFaculdade: UICollectionView!
+    
+    @IBAction func buttonLookSair(_ sender: Any) {
         
+        testButton = 1
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 230
+    @IBAction func buttonLookFalculdade(_ sender: Any) {
+        
+        testButton = 2
     }
     
-    var section = 0
     
     //  sobreescrevendo a função touchesBegan para esconder o teclado quando o usuário tocar na tela
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -104,31 +114,111 @@ class TelaSeusLooks: UIViewController, UITableViewDelegate, UITableViewDataSourc
     
     @IBOutlet weak var climaView: UIView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        collectionViewLookDeFaculdade.reloadData()
+        collectionViewLookdeSair.reloadData()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "lookDeSair"{
+            
+            let nextVC = segue.destination as! TelaVerLook
+            
+            let indexPaths: NSArray = collectionViewLookdeSair.indexPathsForSelectedItems! as NSArray
+            let indexPath: NSIndexPath = indexPaths[0] as! NSIndexPath
+            
+            nextVC.linha = indexPath.row
+            nextVC.teste = 0
+            nextVC.pegaNomeDoLook = lookDeSair[indexPath.row].nome
+            
+        }else if segue.identifier == "lookDeFaculdade"{
+            
+            let nextVC = segue.destination as! TelaVerLook
+            
+            let indexPaths: NSArray = collectionViewLookdeSair.indexPathsForSelectedItems! as NSArray
+            let indexPath: NSIndexPath = indexPaths[0] as! NSIndexPath
+            
+            nextVC.linha = indexPath.row
+            nextVC.teste = 1
+            nextVC.pegaNomeDoLook = lookDeFaculdade[indexPath.row].nome
+            
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         encherAcessorios()
         encherCalcado()
         encherParteCima()
         encherParteBaixo()
         
-        
         navigationController?.navigationBar.prefersLargeTitles = true
         
         climaView.layer.cornerRadius = 30
         
-        TableViewLooks.delegate = self
-        TableViewLooks.dataSource = self
+        collectionViewLookdeSair.delegate = self
+        collectionViewLookdeSair.dataSource = self
+        collectionViewLookDeFaculdade.delegate = self
+        collectionViewLookDeFaculdade.dataSource = self
         
         localizacao()
         
-        TableViewLooks.reloadData()
-        
     }
     
+}
+
+//ViewController onde o usuário vai poder visualizar um look salvo
+class TelaVerLook: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
+    var pegaNomeDoLook = "nome"
+    
+    @IBOutlet weak var nomeDoLook: UILabel!
+    @IBOutlet weak var collectionViewVerLook: UICollectionView!
+    
+    var linha = 0
+    var teste = 0
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if teste == 0{
+            return lookDeSair[linha].pecas.count
+        } else if teste == 1 {
+            return lookDeFaculdade[linha].pecas.count
+        }
+        return 1
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "collectionViewVerLookCell", for: indexPath) as! CollectionViewVerLookCell
+        
+        if teste == 0{
+            
+            cell.nomePecaLook.text = lookDeSair[linha].pecas[indexPath.row].nome
+            cell.imagemPecaLook.image = lookDeSair[linha].pecas[indexPath.row].foto
+            
+        } else if teste == 1 {
+            
+            cell.nomePecaLook.text = lookDeFaculdade[linha].pecas[indexPath.row].nome
+            cell.imagemPecaLook.image = lookDeFaculdade[linha].pecas[indexPath.row].foto
+        
+        }
+        return cell
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        nomeDoLook.text = pegaNomeDoLook
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationController?.navigationBar.prefersLargeTitles = false
+        
+        collectionViewVerLook.delegate = self
+        collectionViewVerLook.dataSource = self
+        
+    }
     
     
 }
@@ -194,75 +284,6 @@ class TelaNovoLook: UIViewController, UITableViewDataSource, UITableViewDelegate
     
 }
 
-//ViewController onde o usuário vai poder visualizar um look salvo
-class TelaVerLook: UIViewController {
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-    
-    
-}
-
-// encher Guarda-Roupa
-
-
-func encherAcessorios(){
-    
-    let nomes:[String] = ["Colar Flecha", "Oculos Quadrado", "Bucket Preto", "Chapéu de Palha", "Boné Azul", "Cordão de Prata", "Gorro Amarelo", "Óculos Redondo"]
-    
-    for n in 0..<7 {
-        
-        let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "acessorio"+String(n+1)), nome: nomes[n])
-        
-        acessorios.append(novapeca)
-        
-    }
-    
-}
-
-func encherParteCima(){
-    
-    let nomes:[String] = ["Camiseta Branca", "Camiseta Marrom", "Camiseta Cinza", "Camisa Listrada", "Camisa Espacial", "Casaco Azul", "Jaqueta Jeans"]
-    
-    for n in 0..<7 {
-        
-        let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "pecaCima"+String(n+1)), nome: nomes[n])
-        
-        parteCima.append(novapeca)
-        
-    }
-    
-}
-
-func encherParteBaixo(){
-    
-    let nomes:[String] = ["Short Pelicano", "Bermuda Jeans", "Short Bege", "Calça Adidas", "Jeans Preta", "Calça Alfaiataria", "Calça Cargo Verde", "Short Preto"]
-    
-    for n in 0..<7 {
-        
-        let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "pecaBaixo"+String(n+1)), nome: nomes[n])
-        
-        parteBaixo.append(novapeca)
-        
-    }
-    
-}
-
-func encherCalcado(){
-    
-    let nomes:[String] = ["Sapato Preto", "Havaiana", "Sapato Branco", "Papete Preta", "Chinelo Branco", "Meia Azul", "All Star Amarelo"]
-    
-    for n in 0..<7 {
-        
-        let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "calcado"+String(n+1)), nome: nomes[n])
-        
-        calcado.append(novapeca)
-        
-    }
-    
-}
 
 class TelaNovoLook2: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
@@ -270,11 +291,24 @@ class TelaNovoLook2: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     @IBOutlet weak var collectionViewNovoLook2: UICollectionView!
     
-
+    
     @IBAction func buttonSalvaNovoLook(_ sender: Any) {
         
         adicionaLooks()
-
+        
+    }
+    
+    var titulos = ["Acessórios", "Parte de Cima", "Parte de Baixo", "Calçados"]
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        let sectionCell = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "collectionViewLooksReusableView", for: indexPath) as! CollectionViewLooksReusableView
+        
+        
+        sectionCell.tituloSection = titulos[indexPath.section]
+        
+        //        sectionCell.labelSection.text = titulos[indexPath.section]
+        
+        return sectionCell
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -312,78 +346,12 @@ class TelaNovoLook2: UIViewController, UICollectionViewDelegate, UICollectionVie
         
         super.viewDidLoad()
         
-        //        encherAcessorios()
-        //        encherCalcado()
-        //        encherParteCima()
-        //        encherParteBaixo()
-        
         navigationController?.navigationBar.prefersLargeTitles = true
         
         collectionViewNovoLook2.delegate = self
         collectionViewNovoLook2.dataSource = self
         
     }
-    
-    // encher Guarda-Roupa
-    
-    
-    var opcao: [[Peca]] = [acessorios, parteCima, parteBaixo, calcado]
-    
-    //
-    //    func encherAcessorios(){
-    //
-    //        let nomes:[String] = ["Colar Flecha", "Oculos Quadrado", "Bucket Preto", "Chapéu de Palha", "Boné Azul", "Cordão de Prata", "Gorro Amarelo", "Óculos Redondo"]
-    //
-    //        for n in 0..<7 {
-    //
-    //            let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "acessorio"+String(n+1)), nome: nomes[n])
-    //
-    //            acessorios.append(novapeca)
-    //
-    //        }
-    //
-    //    }
-    //
-    //    func encherParteCima(){
-    //
-    //        let nomes:[String] = ["Camiseta Branca", "Camiseta Marrom", "Camiseta Cinza", "Camisa Listrada", "Camisa Espacial", "Casaco Azul", "Jaqueta Jeans"]
-    //
-    //        for n in 0..<7 {
-    //
-    //            let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "pecaCima"+String(n+1)), nome: nomes[n])
-    //
-    //            parteCima.append(novapeca)
-    //
-    //        }
-    //
-    //    }
-    //
-    //    func encherParteBaixo(){
-    //
-    //        let nomes:[String] = ["Short Pelicano", "Bermuda Jeans", "Short Bege", "Calça Adidas", "Jeans Preta", "Calça Alfaiataria", "Calça Cargo Verde", "Short Preto"]
-    //
-    //        for n in 0..<7 {
-    //
-    //            let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "pecaBaixo"+String(n+1)), nome: nomes[n])
-    //
-    //            parteBaixo.append(novapeca)
-    //
-    //        }
-    //
-    //    }
-    //
-    //    func encherCalcado(){
-    //
-    //        let nomes:[String] = ["Sapato Preto", "Havaiana", "Sapato Branco", "Papete Preta", "Chinelo Branco", "Meia Azul", "All Star Amarelo"]
-    //
-    //        for n in 0..<7 {
-    //
-    //            let novapeca: Peca = Peca(foto:UIImage(imageLiteralResourceName: "calcado"+String(n+1)), nome: nomes[n])
-    //
-    //            calcado.append(novapeca)
-    //
-    //        }
-    //    }
     
     func adicionaLooks(){
         var novoArrayPeca: [Peca] = []
@@ -393,6 +361,7 @@ class TelaNovoLook2: UIViewController, UICollectionViewDelegate, UICollectionVie
                 if opcao[i][j].pertence == true{
                     
                     novoArrayPeca.append(opcao[i][j])
+                    opcao[i][j].pertence = false
                 }
                 
             }
@@ -401,6 +370,12 @@ class TelaNovoLook2: UIViewController, UICollectionViewDelegate, UICollectionVie
         // salvar o nome do look aqui nessa linha
         
         lookSelecionado.append(Look(pecas: novoArrayPeca, nome: nomeLookTextField.text ?? "nome"))
+        
+        if testButton == 1{
+            lookDeSair.append(lookSelecionado[contador])
+        }else if testButton == 2{
+            lookDeFaculdade.append(lookSelecionado[contador])
+        }
         
         
         print(contador)
@@ -412,4 +387,3 @@ class TelaNovoLook2: UIViewController, UICollectionViewDelegate, UICollectionVie
         
     }
 }
-
