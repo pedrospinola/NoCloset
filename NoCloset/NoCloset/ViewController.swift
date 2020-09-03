@@ -135,7 +135,7 @@ class TelaSeusLooks: UIViewController, UICollectionViewDelegate, UICollectionVie
             
             let nextVC = segue.destination as! TelaVerLook
             
-            let indexPaths: NSArray = collectionViewLookdeSair.indexPathsForSelectedItems! as NSArray
+            let indexPaths: NSArray = collectionViewLookDeFaculdade.indexPathsForSelectedItems! as NSArray
             let indexPath: NSIndexPath = indexPaths[0] as! NSIndexPath
             
             nextVC.linha = indexPath.row
