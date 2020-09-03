@@ -21,7 +21,7 @@ public class CollectionViewNovoLook2Cell: UICollectionViewCell {
         buttonSelected2.isHidden = true
         buttonUnselected2.isHidden = false
         
-        opcao[linha][coluna].pertence = true
+        opcao[linha][coluna].pertence = false
         
     }
     
@@ -29,7 +29,7 @@ public class CollectionViewNovoLook2Cell: UICollectionViewCell {
         buttonUnselected2.isHidden = true
         buttonSelected2.isHidden = false
         
-        opcao[linha][coluna].pertence = false
+        opcao[linha][coluna].pertence = true
     }
     
 }

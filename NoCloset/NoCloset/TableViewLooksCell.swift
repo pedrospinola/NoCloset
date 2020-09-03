@@ -14,4 +14,5 @@ class TableViewLooksCell: UITableViewCell{
     @IBOutlet weak var sessionOfLookTitle: UILabel!
     
     @IBOutlet weak var CollectionViewLook: UICollectionView!
+    
 }

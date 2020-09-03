@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hd2-q4-rbB">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="hd2-q4-rbB">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -330,19 +330,21 @@
                                                     <rect key="frame" x="-9" y="0.0" width="186" height="176"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s64-Qa-olc">
+                                                    <rect key="frame" x="142" y="0.0" width="32" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <state key="normal" image="Editing Unselected Dark"/>
+                                                    <connections>
+                                                        <action selector="buttonUnselected2Action:" destination="4bO-kb-hak" eventType="touchUpInside" id="BnI-nM-tSs"/>
+                                                    </connections>
+                                                </button>
                                                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ffb-Io-rAu">
-                                                    <rect key="frame" x="153" y="8" width="24" height="44"/>
+                                                    <rect key="frame" x="142" y="0.0" width="32" height="44"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <state key="normal" image="Editing Selected Light"/>
                                                     <connections>
                                                         <action selector="buttonSelected2Action:" destination="4bO-kb-hak" eventType="touchUpInside" id="E9g-hQ-qq9"/>
-                                                        <action selector="buttonUnselected2Action:" destination="4bO-kb-hak" eventType="touchUpInside" id="inZ-W3-vwt"/>
                                                     </connections>
-                                                </button>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s64-Qa-olc">
-                                                    <rect key="frame" x="152" y="8" width="25" height="44"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <state key="normal" image="Editing Unselected Dark"/>
                                                 </button>
                                             </subviews>
                                         </collectionViewCellContentView>
@@ -359,9 +361,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="pm1-T8-o73"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Novo Look" id="oAv-aM-uLk"/>
+                    <navigationItem key="navigationItem" title="Novo Look" id="oAv-aM-uLk">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="CJr-tf-kUE">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="M0z-Tg-vdu">
+                                <rect key="frame" x="302" y="7" width="92" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Salvar look"/>
+                                <connections>
+                                    <action selector="buttonSalvaNovoLook:" destination="Tbz-9y-tHp" eventType="touchUpInside" id="SFN-7S-ai0"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionViewNovoLook2" destination="fOS-Kt-AFM" id="U4D-Bp-We3"/>
+                        <outlet property="nomeLookTextField" destination="btE-nz-g4W" id="VAg-sC-uS2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DSZ-i8-FSe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
