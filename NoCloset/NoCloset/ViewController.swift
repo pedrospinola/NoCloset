@@ -11,6 +11,7 @@ import MapKit
 import CoreLocation
 
 // GuardaRoupa
+var cerebros: [Peca] = []
 var acessorios:[Peca] = []
 var parteCima:[Peca] = []
 var parteBaixo:[Peca] = []
@@ -376,11 +377,7 @@ class TelaNovoLook2: UIViewController, UICollectionViewDelegate, UICollectionVie
         }else if testButton == 2{
             lookDeFaculdade.append(lookSelecionado[contador])
         }
-        
-        
-        print(contador)
-        print(lookSelecionado[contador].nome)
-        print(lookSelecionado[contador].pecas)
+
         
         contador = contador + 1
         
