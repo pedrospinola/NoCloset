@@ -15,4 +15,9 @@ class CollectionViewLooksCell: UICollectionViewCell{
     
     @IBOutlet weak var looksName: UILabel!
     
+    @IBOutlet weak var fundoView: UIView!
+    
+    
+    
+    
 }

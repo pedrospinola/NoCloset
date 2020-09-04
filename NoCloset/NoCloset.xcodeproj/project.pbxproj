@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		245212242501C7D300905BFC /* APICerebro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245212232501C7D300905BFC /* APICerebro.swift */; };
+		245212262501C7FC00905BFC /* Cerebro.swift in Sources */ = {isa = PBXBuildFile; fileRef = 245212252501C7FC00905BFC /* Cerebro.swift */; };
+		2452124C2502160B00905BFC /* Lato-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2452124B2502049800905BFC /* Lato-BlackItalic.ttf */; };
+		2452124D2502162100905BFC /* Lato-HeavyItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 245212492502049700905BFC /* Lato-HeavyItalic.ttf */; };
+		2452124E2502162400905BFC /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 245212482502032A00905BFC /* Lato-Black.ttf */; };
+		2452124F2502162700905BFC /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2452124A2502049800905BFC /* Lato-Medium.ttf */; };
 		24977C2524FD22DC00949BEA /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24977C2424FD22DC00949BEA /* Classes.swift */; };
 		24FD437025001C7700129092 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD436F25001C7700129092 /* API.swift */; };
 		24FD437225001FF500129092 /* Tempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FD437125001FF500129092 /* Tempo.swift */; };
@@ -26,6 +32,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		245212232501C7D300905BFC /* APICerebro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICerebro.swift; sourceTree = "<group>"; };
+		245212252501C7FC00905BFC /* Cerebro.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cerebro.swift; sourceTree = "<group>"; };
+		245212482502032A00905BFC /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		245212492502049700905BFC /* Lato-HeavyItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-HeavyItalic.ttf"; sourceTree = "<group>"; };
+		2452124A2502049800905BFC /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
+		2452124B2502049800905BFC /* Lato-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-BlackItalic.ttf"; sourceTree = "<group>"; };
 		24977C2424FD22DC00949BEA /* Classes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		24FD436F25001C7700129092 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		24FD437125001FF500129092 /* Tempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tempo.swift; sourceTree = "<group>"; };
@@ -57,6 +69,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		245212472502030900905BFC /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				2452124B2502049800905BFC /* Lato-BlackItalic.ttf */,
+				245212492502049700905BFC /* Lato-HeavyItalic.ttf */,
+				2452124A2502049800905BFC /* Lato-Medium.ttf */,
+				245212482502032A00905BFC /* Lato-Black.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		AC9CCC2524FD10A100990B8B = {
 			isa = PBXGroup;
 			children = (
@@ -76,6 +99,7 @@
 		AC9CCC3024FD10A100990B8B /* NoCloset */ = {
 			isa = PBXGroup;
 			children = (
+				245212472502030900905BFC /* Fonts */,
 				AC9CCC3124FD10A100990B8B /* AppDelegate.swift */,
 				AC9CCC3324FD10A100990B8B /* SceneDelegate.swift */,
 				AC9CCC3524FD10A100990B8B /* ViewController.swift */,
@@ -84,7 +108,9 @@
 				ACF42CA225016BFB0017546A /* CollectionViewLooksReusableView.swift */,
 				24FD437125001FF500129092 /* Tempo.swift */,
 				ACF42CA625017A4C0017546A /* CollectionViewVerLookCell.swift */,
+				245212232501C7D300905BFC /* APICerebro.swift */,
 				24FD436F25001C7700129092 /* API.swift */,
+				245212252501C7FC00905BFC /* Cerebro.swift */,
 				AC9CCC4B24FD79AC00990B8B /* CollectionViewNovoLookCell.swift */,
 				ACF42CA4250177B00017546A /* EncherGuardaRoupa.swift */,
 				ACE6F10924FFF56F00963E21 /* CollectionViewNovoLook2Cell.swift */,
@@ -155,8 +181,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2452124D2502162100905BFC /* Lato-HeavyItalic.ttf in Resources */,
+				2452124C2502160B00905BFC /* Lato-BlackItalic.ttf in Resources */,
 				AC9CCC3E24FD10A200990B8B /* LaunchScreen.storyboard in Resources */,
 				AC9CCC3B24FD10A200990B8B /* Assets.xcassets in Resources */,
+				2452124E2502162400905BFC /* Lato-Black.ttf in Resources */,
+				2452124F2502162700905BFC /* Lato-Medium.ttf in Resources */,
 				AC9CCC3924FD10A100990B8B /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -173,9 +203,11 @@
 				AC9CCC4A24FD65E900990B8B /* CollectionViewLooksCell.swift in Sources */,
 				24FD437225001FF500129092 /* Tempo.swift in Sources */,
 				AC9CCC4824FD5C3600990B8B /* TableViewNovoLookCell.swift in Sources */,
+				245212242501C7D300905BFC /* APICerebro.swift in Sources */,
 				ACF42CA325016BFB0017546A /* CollectionViewLooksReusableView.swift in Sources */,
 				ACF42CA5250177B00017546A /* EncherGuardaRoupa.swift in Sources */,
 				24FD437025001C7700129092 /* API.swift in Sources */,
+				245212262501C7FC00905BFC /* Cerebro.swift in Sources */,
 				ACF42CA725017A4C0017546A /* CollectionViewVerLookCell.swift in Sources */,
 				AC9CCC3224FD10A100990B8B /* AppDelegate.swift in Sources */,
 				24977C2524FD22DC00949BEA /* Classes.swift in Sources */,
