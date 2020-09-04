@@ -67,3 +67,27 @@ public func encherCalcado(){
     }
     
 }
+
+public func encherCerebros(url:String){
+    
+    
+    for n in 0..<10 {
+        
+        var imagemnova: UIImage = UIImage(imageLiteralResourceName: "calcado1") // Vou tentar ver se rola colocando um calcado antes
+        do {
+            imagemnova = UIImage(data: try Data(contentsOf: URL(string: url)!))!
+        } catch {
+            //handle error
+            print(error.localizedDescription)
+        }
+        
+        let novapeca: Peca = Peca(foto:imagemnova, nome: "Calçado \(n+1)")
+        
+        cerebros.append(novapeca)
+        
+    }
+    
+    
+    
+    
+}

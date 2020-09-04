@@ -50,6 +50,7 @@ class TelaSeusLooks: UIViewController, UICollectionViewDelegate, UICollectionVie
     @IBOutlet weak var labelCidade: UILabel!
     @IBOutlet weak var labelStatus: UILabel!
     @IBOutlet weak var labelDicas: UILabel!
+    @IBOutlet weak var searchbar: UISearchBar!
     
     var locationManager:CLLocationManager!
     
@@ -57,7 +58,10 @@ class TelaSeusLooks: UIViewController, UICollectionViewDelegate, UICollectionVie
     
     //
     
+    
+    
     var enviaDado = 0
+    
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if collectionView == collectionViewLookdeSair{
@@ -71,6 +75,12 @@ class TelaSeusLooks: UIViewController, UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CollectionViewLooksCell", for: indexPath) as! CollectionViewLooksCell
+        
+        cell.fundoView.layer.cornerRadius = 20
+        cell.layer.shadowColor = UIColor.black.cgColor
+        cell.layer.shadowOpacity = 0.08
+        cell.layer.shadowOffset = .zero
+        cell.layer.shadowRadius = 5
         
         if collectionView == collectionViewLookdeSair{
             
@@ -88,10 +98,10 @@ class TelaSeusLooks: UIViewController, UICollectionViewDelegate, UICollectionVie
         return cell
     }
     
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        enviaDado = indexPath.row
-//
-//    }
+    //    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    //        enviaDado = indexPath.row
+    //
+    //    }
     
     
     @IBOutlet weak var collectionViewLookdeSair: UICollectionView!
@@ -156,17 +166,44 @@ class TelaSeusLooks: UIViewController, UICollectionViewDelegate, UICollectionVie
         encherParteBaixo()
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        climaView.layer.cornerRadius = 30
-        
+        navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 74/255, green: 74/255, blue: 74/255, alpha: 1),
+         NSAttributedString.Key.font: UIFont(name: "Lato-Black", size: 32)!]
         collectionViewLookdeSair.delegate = self
         collectionViewLookdeSair.dataSource = self
         collectionViewLookDeFaculdade.delegate = self
         collectionViewLookDeFaculdade.dataSource = self
-        
         localizacao()
+        buscarCerebros()
+        
+//        NotificationCenter.default.addObserver(self, selector: #selector(onDidReceiveData(_:)), name: NSNotification.Name("received data"), object: nil)
+//
+        
         
     }
+    
+    
+
+    
+    
+//    @objc func onDidReceiveData(_ notification: Notification) {
+//
+//
+//
+//        guard let data = notification.userInfo as? [String: [Peca]] else {
+//
+//            return
+//
+//        }
+//
+//        cerebros = data["data"]!
+//        print("CACASDALSFDASLKDAHSKLDHSAJKLDASHDKLASD\(cerebros.count)")
+//
+//    }
+    
+    
+    
+    
+    
     
 }
 
@@ -203,7 +240,7 @@ class TelaVerLook: UIViewController, UICollectionViewDelegate, UICollectionViewD
             
             cell.nomePecaLook.text = lookDeFaculdade[linha].pecas[indexPath.row].nome
             cell.imagemPecaLook.image = lookDeFaculdade[linha].pecas[indexPath.row].foto
-        
+            
         }
         return cell
     }
@@ -377,10 +414,11 @@ class TelaNovoLook2: UIViewController, UICollectionViewDelegate, UICollectionVie
         }else if testButton == 2{
             lookDeFaculdade.append(lookSelecionado[contador])
         }
-
+        
         
         contador = contador + 1
         
         
     }
+    
 }
